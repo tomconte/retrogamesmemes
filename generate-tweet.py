@@ -1,10 +1,9 @@
 import os
 import random
-import re
 
 import requests
 import tweepy
-from langchain.chains import LLMChain, SimpleSequentialChain
+from langchain.chains import LLMChain
 from langchain.chat_models import ChatOpenAI
 from langchain.prompts.chat import (
     ChatPromptTemplate,
@@ -16,6 +15,7 @@ from dotenv import load_dotenv
 
 # Load environment variables using dotenv
 load_dotenv()
+
 
 class ParagraphOutputParser(BaseOutputParser):
     def parse(self, text: str):
@@ -123,7 +123,7 @@ def get_image_url(keywords):
 def generate_content(game_title, platform):
     template = """You are a bot that generates engaging content to be posted on social networks.
     You are very knowledgeable about vintage 8-bit computers and old computer games from the eighties.
-    I will give you the name of computer game, and you will generate a short 
+    I will give you the name of computer game, and you will generate a short
     text telling an anecdote about the game or describing a particularly
     memorable aspect of the game.
     Your style should be vivid, epic and inspiring but concise with short sentences.
